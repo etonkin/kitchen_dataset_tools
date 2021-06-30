@@ -62,12 +62,11 @@ fi
 
 # Three subdatasets are annotated, Brownies, Sandwich and Eggs
 # For this challenge, we ask you not to use the audio feed or motion capture or the BodyMedia device data. You can use the video, the eWatch wearable data, the IMUs and RFID data.
-# TODO modify this as desired
 brownies_touse="S47 S54 S32 S31 S09"
 sandwich_touse="S12 S16 S25 S34 S15"
 eggs_touse="S28 S08 S20 S16 S50"
 # Training and test sets (ml challenge mode)
-brownies_training="S47 S54 S41 S31 "
+brownies_training="S47 S54 S13 S31 "
 sandwich_training="S12 S16 S25 S34"
 eggs_training="S28 S08 S20 S16"
 brownies_test="S09"
