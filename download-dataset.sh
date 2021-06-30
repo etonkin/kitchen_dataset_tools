@@ -1,5 +1,6 @@
 #!/bin/bash
 
+TARGETDIR="."
 # Rostock annotation dataset
 # http://rosdok.uni-rostock.de/resolve/id/rosdok_document_0000012810
 challengemode=unknown
@@ -14,6 +15,23 @@ else
 fi
 echo $1 $challengemode;
 
+TARGETDIR="./challenge-$challengemode/"
+echo "Downloading into $TARGETDIR";
+
+if [ ! -d $TARGETDIR ]; then 
+	mkdir $TARGETDIR;
+ 	if [ $? != 0 ]; then 
+
+		echo "Could not create directory"
+		exit;
+	fi
+fi 
+if [ -d $TARGETDIR ]; then 
+	cd $TARGETDIR;
+else 
+	echo "Can't create download directory";
+	exit; 
+fi
 markupdata=rostock-cmu-semantic-annotation.zip
 markupdir=rostock-cmu-semantic-annotation
 md5exec="";
@@ -32,7 +50,7 @@ if [[ -e $markupdata ]]; then
         # md5 does not match
         wget http://rosdok.uni-rostock.de/file/rosdok_document_0000012810/rosdok_derivate_0000044584/data.zip -O $markupdata
     else
-        echo "$markupdata already present";
+        echo "$markupdata already present and complete";
     fi
 else
     wget http://rosdok.uni-rostock.de/file/rosdok_document_0000012810/rosdok_derivate_0000044584/data.zip -O $markupdata
