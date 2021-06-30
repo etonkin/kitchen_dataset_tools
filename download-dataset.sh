@@ -19,19 +19,10 @@ TARGETDIR="./challenge-$challengemode/"
 echo "Downloading into $TARGETDIR";
 
 if [ ! -d $TARGETDIR ]; then 
-	mkdir $TARGETDIR;
- 	if [ $? != 0 ]; then 
-
-		echo "Could not create directory"
-		exit;
-	fi
+    mkdir $TARGETDIR || ( echo "could not create directory" ; exit 1 )
 fi 
-if [ -d $TARGETDIR ]; then 
-	cd $TARGETDIR;
-else 
-	echo "Can't create download directory";
-	exit; 
-fi
+cd $TARGETDIR || ( echo "permission denied"; exit 1 )
+
 markupdata=rostock-cmu-semantic-annotation.zip
 markupdir=rostock-cmu-semantic-annotation
 md5exec="";
