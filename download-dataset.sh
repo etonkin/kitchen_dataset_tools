@@ -62,9 +62,9 @@ fi
 
 # Three subdatasets are annotated, Brownies, Sandwich and Eggs
 # For this challenge, we ask you not to use the audio feed or motion capture or the BodyMedia device data. You can use the video, the eWatch wearable data, the IMUs and RFID data.
-brownies_touse="S47 S54 S32 S31 S09"
-sandwich_touse="S12 S16 S25 S34 S15"
-eggs_touse="S28 S08 S20 S16 S50"
+brownies_touse="S54 S32 S31 S09"
+sandwich_touse="S16 S25 S34 S15"
+eggs_touse="S08 S20 S16 S50"
 # Training and test sets (ml challenge mode)
 brownies_training="S47 S54 S13 S31 "
 sandwich_training="S12 S16 S25 S34"
@@ -72,7 +72,6 @@ eggs_training="S28 S08 S20 S16"
 brownies_test="S09"
 sandwich_test="S15"
 eggs_test="S50"
-# need to identify a couple more test options with all data in them
 if [[ ! -e cmu-data ]]; then
     mkdir cmu-data;
 fi
