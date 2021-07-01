@@ -73,10 +73,8 @@ function cmu_download {
     itemmode=$3;
     testmode=$4;
     dldir=$5;
-    echo $participant $itemrecipe $itemmode;
+    #echo $participant $itemrecipe $itemmode;
     afname=$x"_"$itemrecipe"_"$itemmode;
-    echo $afname;
-    echo ASDF wget $testmode http://kitchen.cs.cmu.edu/Main/$afname.zip -O cmu-data/$dldir$x/$afname.zip
     wget $testmode http://kitchen.cs.cmu.edu/Main/$afname.zip -O cmu-data/$dldir$x/$afname.zip
 }
 
