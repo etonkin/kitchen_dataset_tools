@@ -63,9 +63,9 @@ eggs_training="S28 S08 S20 S16"
 brownies_test="S09"
 sandwich_test="S15"
 eggs_test="S50"
-if [[ ! -e cmu-data ]]; then
-    mkdir cmu-data;
-fi
+#if [[ ! -e cmu-data ]]; then
+mkdir cmu-data;
+#fi
 
 function cmu_download {
     participant=$1
@@ -138,14 +138,20 @@ if [[ "$challengemode" == "ml" ]]; then
         mkdir cmu-data/test/Brownie;
         mkdir cmu-data/training/Brownie;
         for x in $brownies_training; do
-            cmu_download $x Brownie Video "$testmode" training/
-            cmu_download $x Brownie eWatch $testmode "training/"
-            cmu_download $x Brownie RFID $testmode "training/"
-            cmu_download $x Brownie 6DOFv4 $testmode "training/"
-            cmu_download $x Brownie 3DMGX1 $testmode "training/"
+            if [ ! -e cmu-data/training/$x ]; then
+                mkdir cmu-data/training/$x/
+            fi
+            cmu_download $x Brownie Video $testmode training/
+            cmu_download $x Brownie eWatch $testmode training/
+            cmu_download $x Brownie RFID $testmode training/
+            cmu_download $x Brownie 6DOFv4 $testmode training/
+            cmu_download $x Brownie 3DMGX1 $testmode training/
         done
 
         for x in $brownies_test; do
+            if [ ! -e cmu-data/test/$x ]; then
+                mkdir cmu-data/test/$x/
+            fi
             cmu_download $x Brownie Video $testmode test/
             cmu_download $x Brownie eWatch $testmode test/
             cmu_download $x Brownie RFID $testmode test/
@@ -158,6 +164,9 @@ if [[ "$challengemode" == "ml" ]]; then
         mkdir cmu-data/test/Sandwich;
         mkdir cmu-data/training/Sandwich;
         for x in $sandwich_training; do
+            if [ ! -e cmu-data/training/$x ]; then
+                mkdir cmu-data/training/$x/
+            fi
             cmu_download $x Sandwich Video $testmode training/
             cmu_download $x Sandwich eWatch $testmode training/
             cmu_download $x Sandwich RFID $testmode training/
@@ -166,6 +175,9 @@ if [[ "$challengemode" == "ml" ]]; then
         done
 
         for x in $sandwich_test; do
+            if [ ! -e cmu-data/training/$x ]; then
+                mkdir cmu-data/test/$x/
+            fi
             cmu_download $x Sandwich Video $testmode test/
             cmu_download $x Sandwich eWatch $testmode test/
             cmu_download $x Sandwich RFID $testmode test/
@@ -178,6 +190,9 @@ if [[ "$challengemode" == "ml" ]]; then
         mkdir cmu-data/test/Eggs;
         mkdir cmu-data/training/Eggs;
         for x in $eggs_training; do
+            if [ ! -e cmu-data/training/$x ]; then
+                mkdir cmu-data/training/$x/
+            fi
             cmu_download $x Eggs Video $testmode training/
             cmu_download $x Eggs eWatch $testmode training/
             cmu_download $x Eggs RFID $testmode training/
@@ -186,6 +201,9 @@ if [[ "$challengemode" == "ml" ]]; then
         done
 
         for x in $eggs_test; do
+            if [ ! -e cmu-data/test/$x ]; then
+                mkdir cmu-data/test/$x/
+            fi
             cmu_download $x Eggs Video $testmode test/
             cmu_download $x Eggs eWatch $testmode test/
             cmu_download $x Eggs RFID $testmode test/
