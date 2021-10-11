@@ -3,7 +3,7 @@
 TARGETDIR="."
 # Rostock annotation dataset
 # http://rosdok.uni-rostock.de/resolve/id/rosdok_document_0000012810
-challengemode=challenge1
+challengemode=unknown
 if [[ "$1" == "challenge1" ]]; then
     challengemode="manual";
 elif [[ "$1" == "challenge2" ]]; then
